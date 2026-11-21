@@ -1,5 +1,5 @@
 # FreakyWeb
-EzWeb but written in FREAK
+FreakyWeb but written in FREAK
 
 
 
@@ -21,16 +21,16 @@ EzWeb but written in FREAK
 
 *A lightweight website hosting tool that lets developers share a single layout across plain HTML websites.*
 
-[![License](https://img.shields.io/badge/license-Open%20Source-brightgreen)](https://ezweb.aquaweb.cc/source)
-[![Contributions](https://img.shields.io/badge/contributions-open-orange)](https://ezweb.aquaweb.cc/source)
+[![License](https://img.shields.io/badge/license-Open%20Source-brightgreen)](https://FreakyWeb.aquaweb.cc/source)
+[![Contributions](https://img.shields.io/badge/contributions-open-orange)](https://FreakyWeb.aquaweb.cc/source)
 
 </div>
 
 ---
 
-## What is EzWeb?
+## What is FreakyWeb?
 
-EzWeb is a tool that runs a local HTTP server, automatically injecting a shared `layout.html` into every page of your static website. Write your content in plain HTML files — EzWeb handles the wrapper so you never repeat your navigation, header, or footer again.
+FreakyWeb is a tool that runs a local HTTP server, automatically injecting a shared `layout.html` into every page of your static website. Write your content in plain HTML files — FreakyWeb handles the wrapper so you never repeat your navigation, header, or footer again.
 
 ---
 
@@ -114,7 +114,7 @@ Requests to a denied path are redirected to `accessDenied.html`.
 
 ## How It Works
 
-EzWeb uses `Akuma`*(Freak's HTTP server library)* to handle incoming requests. For each `.html` request it:
+FreakyWeb uses `Akuma`*(Freak's HTTP server library)* to handle incoming requests. For each `.html` request it:
 
 1. Reads `layout.html`
 2. Reads the target page file
@@ -143,7 +143,7 @@ The full FREAK source is available in the repository. Contributions are open.
 
 <div align="center">
 
-© 2026 Freak Dev Team — EzWeb · All code and art/media by Akumarin Kukino
+© 2026 Freak Dev Team — FreakyWeb · All code and art/media by Akumarin Kukino
 
 *[Just use HTML.](https://justfuckingusehtml.com/)*
 
