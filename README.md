@@ -1,7 +1,7 @@
 # FreakyWeb
 EzWeb but written in FREAK
 
-# (FREAL)[https://freaklang.dev/]
+# [FREAK](https://freaklang.dev/)
 
 ## Under development
 -# Unreleased
