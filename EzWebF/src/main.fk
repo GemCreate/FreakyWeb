@@ -1,0 +1,84 @@
+use akuma::{Akuma, Offering, summon, rite_get, rite_post, seal, seal_body_limit ,wander, unleash, unleash_exposed, awake, next_offering, ritual_next, ritual_name, finish, slay, path_int, scroll_word, cursed, reply_text, reply_html, reply_file, redirect}
+use michi::{Michi, michi, michi_here}
+pilot directory = michi_here()
+pilot template = directory.into("template.html")
+task serveHTML(theFile: Michi, o: Offering) {
+
+    if theFile.exists() {
+       if theFile.cosplay() == ".html"{
+           reply_html(o, 200, template.recite().replace("<!-- TEMPLATE -->", theFile.recite()) )
+       }
+    }
+}
+
+task main() {
+    pilot app = summon()
+    seal(app, "log")
+    pilot port: int = ask("Desired port: ").to_int()
+    pilot hasIndex = false
+    pilot files = directory.all_files(true)
+    rite_get(app, "/", "index")
+    for each sfile in files {
+        pilot ey : word = sfile.full_name().text()
+                  pilot ay : word = directory.full_name().text()
+                  pilot oy : word = ey.replace(ay, "")
+        if sfile.cosplay() == ".html" {
+            if sfile.stem() != "template"{
+            if oy != "/index.html" {
+
+            say "including HTML: " + oy.replace(".html", "")
+        rite_get(app, oy.replace(".html", ""), oy.replace(".html", "") )
+        }
+        }
+        }
+        else {
+
+
+            say "including file: " + oy
+            rite_get(app, oy, oy)
+        }
+    }
+
+
+      wander(app, "lost")
+      pilot lair = unleash_exposed(app, "0.0.0.0", port)
+      repeat while awake(lair) {
+          pilot o = next_offering(lair)
+           repeat while ritual_next(o) {
+
+               if ritual_name(o) == "/index" {
+                   serveHTML(directory.into("index.html").full_name(), o)
+               }
+               else if ritual_name(o) == "index" {
+                   serveHTML(directory.into("index.html").full_name(), o)
+               }
+              else if ritual_name(o) == "lost" {
+
+              reply_html(o, 404, "you wandered into the wrong world line\n")
+              }
+              else {
+                  for each zfile in files {
+                      pilot ey : word = zfile.full_name().text()
+                                               pilot ay : word = directory.full_name().text()
+                                               pilot oy : word = ey.replace(ay, "")
+                      if zfile.cosplay() == ".html" {
+                          if oy != "index.html" {
+                              if ritual_name(o) == oy.replace(".html", "") {
+                                  serveHTML(zfile.full_name(), o)
+                              }
+                          }
+                      }
+                      else {
+                                        if ritual_name(o) == oy {
+                                         reply_file(o, ey)
+                                     }
+                      }
+
+                  }
+              }
+          }
+
+          finish(o)
+      }
+      slay(lair)
+}
