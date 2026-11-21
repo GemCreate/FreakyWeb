@@ -1,11 +1,13 @@
 # FreakyWeb
 EzWeb but written in FREAK
 
+
+
 # [FREAK](https://freaklang.dev/)
 
 ## Under development
 
--# Unreleased
+ Unreleased
 
 
 ---
@@ -13,6 +15,7 @@ EzWeb but written in FREAK
 
 <div align="center">
 
+<img src="FKWebBanner.png" />
 
 **Web hosting done simple.**
 
