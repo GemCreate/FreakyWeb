@@ -57,7 +57,7 @@ my-site/
 
 ### 2 — Set up your layout
 
-`layout.html` holds everything that wraps every page: your `<head>` metadata (except `<title>`), navigation, footer, etc. Place the placeholder `{WebContent}` wherever your per-page content should be injected:
+`layout.html` holds everything that wraps every page: your `<head>` metadata (except `<title>`), navigation, footer, etc. Place the placeholder `<!-- TEMPLATE -->` wherever your per-page content should be injected:
 
 ```html
 <!DOCTYPE html>
