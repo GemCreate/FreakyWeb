@@ -30,7 +30,7 @@ FreakyWeb but written in FREAK
 
 ## What is FreakyWeb?
 
-FreakyWeb is a tool that runs a local HTTP server, automatically injecting a shared `layout.html` into every page of your static website. Write your content in plain HTML files — FreakyWeb handles the wrapper so you never repeat your navigation, header, or footer again.
+FreakyWeb is a tool that runs a local HTTP server, automatically injecting a shared `template.html` into every page of your static website. Write your content in plain HTML files — FreakyWeb handles the wrapper so you never repeat your navigation, header, or footer again.
 
 ---
 
@@ -49,7 +49,7 @@ Your website folder must contain these five files:
 ```
 my-site/
 ├── index.html          ← Homepage content
-├── layout.html         ← Shared layout/template
+├── template.html         ← Shared layout/template
 ├── notFound.html       ← ***NOT IMPLEMENTED YET***
 ├── accessDenied.html   ← ***NOT IMPLEMENTED YET*** 
 └── DeniedPaths.txt     ← ***NOT IMPLEMENTED YET***
@@ -57,7 +57,7 @@ my-site/
 
 ### 2 — Set up your layout
 
-`layout.html` holds everything that wraps every page: your `<head>` metadata (except `<title>`), navigation, footer, etc. Place the placeholder `<!-- TEMPLATE -->` wherever your per-page content should be injected:
+`template.html` holds everything that wraps every page: your `<head>` metadata (except `<title>`), navigation, footer, etc. Place the placeholder `<!-- TEMPLATE -->` wherever your per-page content should be injected:
 
 ```html
 <!DOCTYPE html>
@@ -116,7 +116,7 @@ Requests to a denied path are redirected to `accessDenied.html`.
 
 FreakyWeb uses `Akuma`*(Freak's HTTP server library)* to handle incoming requests. For each `.html` request it:
 
-1. Reads `layout.html`
+1. Reads `template.html`
 2. Reads the target page file
 3. Replaces `<!-- TEMPLATE -->` in the layout with the page content
 4. Serves the combined result
