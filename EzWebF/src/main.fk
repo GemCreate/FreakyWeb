@@ -1,5 +1,6 @@
 use akuma::{Akuma, Offering, summon, rite_get, rite_post, seal, seal_body_limit ,wander, unleash, unleash_exposed, awake, next_offering, ritual_next, ritual_name, finish, slay, path_int, scroll_word, cursed, reply_text, reply_html, reply_file, redirect}
 use michi::{Michi, michi, michi_here}
+use emaki::{unroll}
 pilot directory = michi_here()
 pilot template = directory.into("template.html")
 task serveHTML(theFile: Michi, o: Offering) {
@@ -10,7 +11,14 @@ task serveHTML(theFile: Michi, o: Offering) {
        }
     }
 }
+task serveMD(theFile: Michi, o: Offering) {
 
+    if theFile.exists() {
+       if theFile.cosplay() == ".md"{
+           reply_html(o, 200, template.recite().replace("<!-- TEMPLATE -->", unroll(theFile.recite())) )
+       }
+    }
+}
 task main() {
     pilot app = summon()
     seal(app, "log")
@@ -30,6 +38,11 @@ task main() {
         rite_get(app, oy.replace(".html", ""), oy.replace(".html", "") )
         }
         }
+        }
+        else if sfile.cosplay() == ".md" {
+            say "including MD: " + oy.replace(".md", "")
+              rite_get(app, oy.replace(".md", ""), oy.replace(".md", "") )
+
         }
         else {
 
@@ -71,6 +84,15 @@ task main() {
                                   serveHTML(zfile.full_name(), o)
                               }
                           }
+                      }
+                      else if zfile.cosplay() == ".md" {
+                          say ritual_name(o)
+                          say oy.replace(".md", "")
+                          if ritual_name(o) == oy.replace(".md", "") {
+                                                   serveMD(zfile.full_name(), o)
+                                                   --reply_text(o, 200, zfile.full_name().text())
+                                                   --serveHTML(zfile.full_name(), o)
+                                                }
                       }
                       else {
                                         if ritual_name(o) == oy {
