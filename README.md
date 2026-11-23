@@ -49,8 +49,8 @@ Your website folder must contain these five files:
 ```
 my-site/
 ├── index.html          ← Homepage content
-├── template.html         ← Shared layout/template
-├── notFound.html       ← ***NOT IMPLEMENTED YET***
+├── template.html       ← Shared layout/template
+├── notFound.html       ← A page to show for non-existant paths
 ├── accessDenied.html   ← ***NOT IMPLEMENTED YET*** 
 └── DeniedPaths.txt     ← ***NOT IMPLEMENTED YET***
 ```

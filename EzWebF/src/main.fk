@@ -53,8 +53,12 @@ task main() {
                    serveHTML(directory.into("index.html").full_name(), o)
                }
               else if ritual_name(o) == "lost" {
-
-              reply_html(o, 404, "you wandered into the wrong world line\n")
+                  pilot theFile = directory.into("notFound.html").full_name()
+                  if theFile.exists() {
+                        if theFile.cosplay() == ".html"{
+                            reply_html(o, 404, template.recite().replace("<!-- TEMPLATE -->", theFile.recite()) )
+                        }
+                     }
               }
               else {
                   for each zfile in files {
