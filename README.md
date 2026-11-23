@@ -36,7 +36,7 @@ FreakyWeb is a tool that runs a local HTTP server, automatically injecting a sha
 
 ## Download not yet available!
 
-You're free to download from source.
+You're free to compile from source.
 
 ---
 
