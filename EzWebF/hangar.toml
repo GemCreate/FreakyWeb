@@ -4,6 +4,7 @@ project.name = "EzWeb"
 project.version = "0.1.0"
 
 [dependencies]
-akuma = "^0.6.0"
 michi = "^0.2.0"
 emaki = "^0.1.0"
+akuma = "^0.9.0"
+kotoba = "^0.1.0"

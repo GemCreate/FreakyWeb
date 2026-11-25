@@ -1,6 +1,7 @@
 use akuma::{Akuma, Offering, summon, rite_get, rite_post, seal, seal_body_limit ,wander, unleash, unleash_exposed, awake, next_offering, ritual_next, ritual_name, finish, slay, path_int, scroll_word, cursed, reply_text, reply_html, reply_file, redirect}
 use michi::{Michi, michi, michi_here}
 use emaki::{unroll}
+use kotoba::{kotoba_split}
 pilot directory = michi_here()
 pilot template = directory.into("template.html")
 task serveHTML(theFile: Michi, o: Offering) {
@@ -19,6 +20,16 @@ task serveMD(theFile: Michi, o: Offering) {
        }
     }
 }
+
+task isProhibited(paths: List<word>, name: word) -> bool {
+for each lepath in paths {
+    if lepath == name {
+        give back true
+    }
+
+}
+give back false
+}
 task main() {
     pilot app = summon()
     seal(app, "log")
@@ -30,6 +41,10 @@ task main() {
         pilot ey : word = sfile.full_name().text()
                   pilot ay : word = directory.full_name().text()
                   pilot oy : word = ey.replace(ay, "")
+                  if sfile.stem() != "DeniedPaths.txt"{
+
+
+
         if sfile.cosplay() == ".html" {
             if sfile.stem() != "template"{
             if oy != "/index.html" {
@@ -50,15 +65,27 @@ task main() {
             say "including file: " + oy
             rite_get(app, oy, oy)
         }
+        }
     }
 
 
       wander(app, "lost")
       pilot lair = unleash_exposed(app, "0.0.0.0", port)
+      pilot deniedPaths = kotoba_split(directory.into("DeniedPaths.txt").recite(), "\n")
+      say "Denied paths:"
+      for each ble in deniedPaths {
+          say "d-Path: " + ble
+
+      }
       repeat while awake(lair) {
           pilot o = next_offering(lair)
            repeat while ritual_next(o) {
+               say "Ritual: " + ritual_name(o)
+                   if isProhibited(deniedPaths, ritual_name(o))  {
+                       serveHTML(directory.into("accessDenied.html").full_name(), o)
 
+                   }
+                   else {
                if ritual_name(o) == "/index" {
                    serveHTML(directory.into("index.html").full_name(), o)
                }
@@ -101,6 +128,7 @@ task main() {
                       }
 
                   }
+              }
               }
           }
 

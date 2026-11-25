@@ -51,8 +51,8 @@ my-site/
 ├── index.html          ← Homepage content
 ├── template.html       ← Shared layout/template
 ├── notFound.html       ← A page to show for non-existant paths
-├── accessDenied.html   ← ***NOT IMPLEMENTED YET*** 
-└── DeniedPaths.txt     ← ***NOT IMPLEMENTED YET***
+├── accessDenied.html   ← A page to show for prohibited paths 
+└── DeniedPaths.txt     ← A list of prohibited paths, split by new lines
 ```
 
 ### 2 — Set up your layout
@@ -90,7 +90,7 @@ Each page file only needs a `<head>` tag (for its own `<title>`) and its body co
 ```
 
 
-### 5 — Restrict access - UNIMPLEMENTED
+### 5 — Restrict access
 
 Add file paths (one per line) to `DeniedPaths.txt` to block those paths from being served to visitors:
 
